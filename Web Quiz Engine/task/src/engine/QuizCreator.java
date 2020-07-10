@@ -1,17 +1,21 @@
 package engine;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.server.ResponseStatusException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class QuizCreator implements QuizService{
-    public static int id;
+    public static Long id;
     public List<Quiz> quizStorage;
 
+    @Autowired
+    private QuizRepository quizRepository;
+
     public QuizCreator(){
-        id = 0;
+        id = 0L;
         this.quizStorage = new ArrayList<>();
     }
 //
@@ -35,16 +39,19 @@ public class QuizCreator implements QuizService{
 //        }
         this.quizStorage.add(quiz);
         quiz.setId(id++);
-        return quiz;
+        System.out.println(quiz);
+        return quizRepository.save(quiz);
+//        return quiz;
     }
 
     @Override
-    public Quiz findQuizById(int id) {
-        if (id < this.quizStorage.size()){
-            return this.quizStorage.get(id);
-        }else{
-            throw new NoIdException();
-        }
+    public Quiz findQuizById(Long id) {
+        return quizRepository.findById(id).get();
+//        if (id < this.quizStorage.size()){
+//            return this.quizStorage.get(id);
+//        }else{
+//            throw new NoIdException();
+//        }
 
 
     }
