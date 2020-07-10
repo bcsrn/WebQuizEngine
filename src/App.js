@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{Component} from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom';
 import './App.css';
+import './index.css';
 
-function App() {
+import HomePage from './pages/HomePage';
+import CreateQuiz from './pages/CreateQuiz';
+import UserLogin from './pages/UserLogin';
+import SolveQuiz from './pages/SolveQuiz';
+import NavBar from './NavBar';
+import NotFoundPage from './pages/NotFoundPage';
+
+class App extends Component {
+  render(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+      <NavBar />
+      <div id="page-body">
+      <Switch>
+        <Route path="/" component={HomePage} exact/>
+        <Route path="/login" component={UserLogin} />
+        <Route path="/createQuiz" component={CreateQuiz} />
+        <Route path="/solveQuiz" component={SolveQuiz} />
+        <Route component={NotFoundPage} />
+      </Switch>
+      </div>
+      </div>
+    </Router>
   );
+  }
 }
 
 export default App;

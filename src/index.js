@@ -10,6 +10,7 @@ import {useFormik, FieldArray} from 'formik';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { blockStatement } from '@babel/types';
+import App from './App';
 
 
 function CreateQuiz(){
@@ -128,6 +129,6 @@ function CreateQuiz(){
 
 
 ReactDOM.render(
-  <CreateQuiz />,
+  <App />,
   document.getElementById('root')
 );
