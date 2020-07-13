@@ -25,7 +25,7 @@ class App extends Component {
         <Route path="/" component={HomePage} exact/>
         <Route path="/login" component={UserLogin} />
         <Route path="/createQuiz" component={CreateQuiz} />
-        <Route path="/solveQuiz" component={SolveQuiz} />
+        <Route path="/solveQuiz/:id" component={SolveQuiz} />
         <Route component={NotFoundPage} />
       </Switch>
       </div>
