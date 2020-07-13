@@ -39,7 +39,7 @@ function CreateQuiz(){
         }
         })
         .catch(error => console.error('Error:',error))
-        // .then(response => alert('Success:'));
+        // .then(data => console.log);
   
       },
   
